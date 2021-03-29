@@ -56,3 +56,69 @@ _class: lead
 </video>
 
 ---
+
+## About us
+
+---
+
+## Steve Zazeski
+
+---
+
+## Jason Rambeck
+
+---
+
+## Why performance matters
+
+---
+
+## User experience
+<!--
+_class: lead
+-->
+Users studies have shown that page speed is the number one factor in user experience.
+
+![width:700px](/assets/ux-hierarchy.png)
+
+Source: [SPEED MATTERS: Designing for mobile performance](https://www.awwwards.com/brain-food-perceived-performance/)
+
+---
+
+## Bounce rate
+<!--
+_class: lead
+-->
+
+![image](/assets/bounce-rates.png)
+
+Source: [Google](https://www.thinkwithgoogle.com/marketing-resources/data-measurement/mobile-page-speed-new-industry-benchmarks/)
+
+---
+
+<!--
+_class: lead
+-->
+
+## Trust
+
+> **Fast websites build trust**
+> -- _Yesenia Perez Cruz_ [[Youtube]](https://www.youtube.com/watch?v=wBcPEZf0hwI)
+
+---
+
+# What is performance? 
+
+* It is **not** as simple as how many seconds it takes for a page to load.
+* There are a number of other **milestones** we can measure on the way to a complete page load that help define performance.
+* It is **relative**: What the user wants to do, what their connection speed is, the power of their device.
+* New visitors and repeat visitors have a different experience.
+
+--- 
+
+![bg left:40% 70%](/assets/lighthouse-logo.svg)
+
+# Lighthouse
+
+---
+
