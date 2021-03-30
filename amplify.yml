@@ -1,0 +1,10 @@
+version: 1
+frontend:
+  phases:
+    build:
+      commands:
+        - marp deck.md -o index.html
+  artifacts:
+    baseDirectory: /
+    files:
+      - '**/*'
