@@ -3,6 +3,8 @@ frontend:
   phases:
     build:
       commands:
+        - pwd
+        - ls -la
         - npm install -g @marp-team/marp-cli
         - marp deck.md -o index.html
   artifacts:
