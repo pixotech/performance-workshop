@@ -51,9 +51,7 @@ footer: '![image](/assets/pixo-logo.svg)'
 _class: lead
 -->
 
-<video width="700" class="bg" poster="/assets/play.svg" onclick="this.paused ? this.play() : this.pause(); this.blur()" onpause="">
-    <source src="/assets/layout-instability2.webm" type="video/mp4">
-</video>
+
 
 ---
 
@@ -114,11 +112,137 @@ _class: lead
 * It is **relative**: What the user wants to do, what their connection speed is, the power of their device.
 * New visitors and repeat visitors have a different experience.
 
---- 
+---
+<!--
+_class: lead
+-->
+## Web Vitals
+
+Google created a set of Web Vitals that help us think about (and measure) a unique facet of performance experience.
+
+---
+<!--
+_class: lead
+-->
+## Core Web Vitals
+
+Core Web Vitals are a subset of these metrics that they have determined are the most meaningful.
+
+![width:1000px](/assets/core-web-vitals.png)
+
+---
+
+![bg left:40% 70%](/assets/lcp_ux.svg)
+# Largest Contentful Paint
+
+measures the time until the page displays what is likely its main content, like a hero image or heading
+
+---
+
+![bg left:40% 70%](/assets/fid_ux.svg)
+# First Input Delay
+
+measures the interactivity of the page, from the user's first interaction to the time the page responds to it
+
+---
+
+![bg left:40% 70%](/assets/cls_ux.svg)
+# Cumulative Layout Shift
+
+measures the degree of layout instability on the page, due to shifts like asynchronously loaded content being injected
+
+---
+<!--
+_class: lead
+-->
+<video width="700" class="bg" poster="/assets/play.svg" onclick="this.paused ? this.play() : this.pause(); this.blur()" onpause="">
+    <source src="/assets/layout-instability2.webm" type="video/mp4">
+</video>
+
+---
+
+# Other Vitals
+
+* [First contentful paint (FCP)](https://web.dev/fcp/): measures the time from when the page starts loading to when any part of the page's content is rendered on the screen.
+* [Time to Interactive (TTI)](https://web.dev/tti/): measures the time from when the page starts loading to when it's visually rendered, its initial scripts (if any) have loaded, and it's capable of reliably responding to user input quickly.
+* [Total blocking time (TBT)](https://web.dev/tbt/): measures the total amount of time between FCP and TTI where the main thread was blocked for long enough to prevent input responsiveness.
+
+---
 
 ![bg left:40% 70%](/assets/lighthouse-logo.svg)
 
 # Lighthouse
+
+There are multiple ways to use Lighthouse.
+
+* [Google PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights) . Run Lighthouse and link to reports without installing a thing.
+* [Chrome DevTools](https://developers.google.com/web/tools/lighthouse#devtools) . Easily audit pages that require authentication, and read your reports in a user-friendly format.
+* [Command Line Interface](https://developers.google.com/web/tools/lighthouse#cli) . Automate your Lighthouse runs via shell scripts.
+* [Node module](https://developers.google.com/web/tools/lighthouse#programmatic) . Integrate Lighthouse into your continuous integration systems.
+---
+
+# Google PageSpeed Insights (PSI)
+
+Downside
+* No easy way to export
+* No "settings"
+* Website must be public
+
+Upside
+* Very easy
+* Includes "field data" (limited available data)
+* API - Can use this as a service to automate or build an application.
+
+---
+
+# PSI Report with real-world field data from the Chrome User Experience Report
+
+The Chrome User Experience Report is powered by real user measurement of key user experience metrics across the public web, aggregated from users who have opted-in to syncing their browsing history, have not set up a Sync passphrase, and have usage statistic reporting enabled.
+
+![width:700px](/assets/psi-vitals.png)
+
+---
+
+# Demo PSI
+
+* CNN.com
+* BestBuy.com
+* Other
+
+---
+
+# Chrome DevTools
+
+* Very easy
+* Lots of settings available
+* Affected by your computing power and internet connection
+* Affected by your browser configuration and extensions
+
+---
+
+# Demo in DevTools
+
+* CNN.com
+* BestBuy.com
+* Other
+
+---
+
+# The command line
+
+* Free of browser extensions
+* Lots of settings available
+* Scripting and automation
+* Affected by your computing power and internet connection
+
+---
+
+# Demo CLI
+
+```bash
+npm install -g lighthouse
+lighthouse https://cnn.com
+```
 
 ---
 
