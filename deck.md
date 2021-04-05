@@ -107,13 +107,13 @@ Source: [Google](https://www.thinkwithgoogle.com/marketing-resources/data-measur
 
 ## Web Vitals
 
-Google created a set of Web Vitals that help us think about (and measure) a unique facet of performance experience.
+Google created a set of Web Vitals that help us think about (and measure) unique facets of performance experience.
 
 ---
 
 ## Core Web Vitals
 
-Core Web Vitals are a subset of these metrics that they have determined are the most meaningful.
+Core Web Vitals are a subset of these metrics they have determined are the most meaningful.
 
 ![width:1000px](/assets/core-web-vitals.png)
 
@@ -124,8 +124,10 @@ Core Web Vitals are a subset of these metrics that they have determined are the 
 
 [Measures](https://web.dev/lcp/) the time until the page displays what is likely its main content, like a hero image or heading
 
-![width:1000px](/assets/lcp-example-1.png)
-![width:1000px](/assets/lcp-example-2.png)
+---
+
+![width:800px](/assets/lcp-example-1.png)
+![width:800px](/assets/lcp-example-2.png)
 
 ---
 
@@ -134,6 +136,8 @@ Core Web Vitals are a subset of these metrics that they have determined are the 
 
 measures the interactivity of the page, from the user's first interaction to the time the page responds to it.
 _Field only metric (not in Lighthouse)_
+
+---
 
 ![width:1000px](/assets/fid-diagram.svg)
 
@@ -161,6 +165,8 @@ measures the degree of layout instability on the page, due to shifts like asynch
 
 [Measures](https://web.dev/speed-index/) how quickly content is visually displayed during page load. Lighthouse first captures a video of the page loading in the browser and computes the visual progression between frames.
   
+---
+
 ![width:1000px](/assets/speed-index-histogram.png)
 
 ---
@@ -169,6 +175,8 @@ measures the degree of layout instability on the page, due to shifts like asynch
 
 [Measures](https://web.dev/fcp/) the time from when the page starts loading to when any part of the page's content is rendered on the screen.
 
+---
+
 ![width:1000px](/assets/fcp-example.png)
 
 ---
@@ -176,6 +184,8 @@ measures the degree of layout instability on the page, due to shifts like asynch
 # Time to Interactive (TTI)
 
 [Measures](https://web.dev/tti/) the time from when the page starts loading to when it's visually rendered, its initial scripts (if any) have loaded, and it's capable of reliably responding to user input quickly.
+
+---
 
 ![width:1000px](/assets/tti-diagram.svg)
 
@@ -189,38 +199,43 @@ measures the degree of layout instability on the page, due to shifts like asynch
 
 ---
 <!--
-_class: default
+_class: lead
 -->
 
 ![bg left:40% 70%](/assets/lighthouse-logo.svg)
 
 # Lighthouse
 
-There are multiple ways to use Lighthouse.
+---
+
+**There are multiple ways to use Lighthouse.**
 
 * [Google PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights) . Run Lighthouse and link to reports without installing a thing.
 * [Chrome DevTools](https://developers.google.com/web/tools/lighthouse#devtools) . Easily audit pages that require authentication, and read your reports in a user-friendly format.
 * [Command Line Interface](https://developers.google.com/web/tools/lighthouse#cli) . Automate your Lighthouse runs via shell scripts.
 * [Node module](https://developers.google.com/web/tools/lighthouse#programmatic) . Integrate Lighthouse into your continuous integration systems.
 ---
+<!--
+_class: _default
+-->
 
-# Google PageSpeed Insights (PSI)
-
-Downside
+### Downside
 * No easy way to export
 * No "settings"
 * Website must be public
 
-Upside
+### Upside
 * Very easy
 * Includes "field data" (limited available data)
 * API - Can use this as a service to automate or build an application.
 
 ---
 
-# PSI Report with real-world field data from the Chrome User Experience Report
+# Field data vs. Lab data
 
-The Chrome User Experience Report is powered by real user measurement of key user experience metrics across the public web, aggregated from users who have opted-in to syncing their browsing history, have not set up a Sync passphrase, and have usage statistic reporting enabled.
+**Field data:** The Chrome User Experience Report is powered by real user measurement of key user experience metrics across the public web, aggregated from users who have opted-in to syncing their browsing history, have not set up a Sync passphrase, and have usage statistic reporting enabled.
+
+---
 
 ![width:700px](/assets/psi-vitals.png)
 
