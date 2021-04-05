@@ -1,7 +1,7 @@
 ---
 
 theme: gaia
-_class: lead
+class: lead
 paginate: true
 backgroundColor: #eff5f5
 backgroundImage: url('/assets/white-top.svg')
@@ -72,9 +72,7 @@ _class: lead
 ---
 
 ## User experience
-<!--
-_class: lead
--->
+
 Users studies have shown that page speed is the number one factor in user experience.
 
 ![width:700px](/assets/ux-hierarchy.png)
@@ -84,9 +82,6 @@ Source: [SPEED MATTERS: Designing for mobile performance](https://www.awwwards.c
 ---
 
 ## Bounce rate
-<!--
-_class: lead
--->
 
 ![image](/assets/bounce-rates.png)
 
@@ -94,14 +89,10 @@ Source: [Google](https://www.thinkwithgoogle.com/marketing-resources/data-measur
 
 ---
 
-<!--
-_class: lead
--->
-
 ## Trust
 
 > **Fast websites build trust**
-> -- _Yesenia Perez Cruz_ [[Youtube]](https://www.youtube.com/watch?v=wBcPEZf0hwI)
+> — _Yesenia Perez Cruz_ [[Youtube]](https://www.youtube.com/watch?v=wBcPEZf0hwI)
 
 ---
 
@@ -113,17 +104,13 @@ _class: lead
 * New visitors and repeat visitors have a different experience.
 
 ---
-<!--
-_class: lead
--->
+
 ## Web Vitals
 
 Google created a set of Web Vitals that help us think about (and measure) a unique facet of performance experience.
 
 ---
-<!--
-_class: lead
--->
+
 ## Core Web Vitals
 
 Core Web Vitals are a subset of these metrics that they have determined are the most meaningful.
@@ -135,14 +122,20 @@ Core Web Vitals are a subset of these metrics that they have determined are the 
 ![bg left:40% 70%](/assets/lcp_ux.svg)
 # Largest Contentful Paint
 
-measures the time until the page displays what is likely its main content, like a hero image or heading
+[Measures](https://web.dev/lcp/) the time until the page displays what is likely its main content, like a hero image or heading
+
+![width:1000px](/assets/lcp-example-1.png)
+![width:1000px](/assets/lcp-example-2.png)
 
 ---
 
 ![bg left:40% 70%](/assets/fid_ux.svg)
 # First Input Delay
 
-measures the interactivity of the page, from the user's first interaction to the time the page responds to it
+measures the interactivity of the page, from the user's first interaction to the time the page responds to it.
+_Field only metric (not in Lighthouse)_
+
+![width:1000px](/assets/fid-diagram.svg)
 
 ---
 
@@ -152,22 +145,52 @@ measures the interactivity of the page, from the user's first interaction to the
 measures the degree of layout instability on the page, due to shifts like asynchronously loaded content being injected
 
 ---
-<!--
-_class: lead
--->
+
 <video width="700" class="bg" poster="/assets/play.svg" onclick="this.paused ? this.play() : this.pause(); this.blur()" onpause="">
     <source src="/assets/layout-instability2.webm" type="video/mp4">
 </video>
 
 ---
 
-# Other Vitals
+# Other Web Vitals
 
-* [First contentful paint (FCP)](https://web.dev/fcp/): measures the time from when the page starts loading to when any part of the page's content is rendered on the screen.
-* [Time to Interactive (TTI)](https://web.dev/tti/): measures the time from when the page starts loading to when it's visually rendered, its initial scripts (if any) have loaded, and it's capable of reliably responding to user input quickly.
-* [Total blocking time (TBT)](https://web.dev/tbt/): measures the total amount of time between FCP and TTI where the main thread was blocked for long enough to prevent input responsiveness.
 
 ---
+
+# Speed Index (SI)
+
+[Measures](https://web.dev/speed-index/) how quickly content is visually displayed during page load. Lighthouse first captures a video of the page loading in the browser and computes the visual progression between frames.
+  
+![width:1000px](/assets/speed-index-histogram.png)
+
+---
+
+# First Contentful paint (FCP)
+
+[Measures](https://web.dev/fcp/) the time from when the page starts loading to when any part of the page's content is rendered on the screen.
+
+![width:1000px](/assets/fcp-example.png)
+
+---
+
+# Time to Interactive (TTI)
+
+[Measures](https://web.dev/tti/) the time from when the page starts loading to when it's visually rendered, its initial scripts (if any) have loaded, and it's capable of reliably responding to user input quickly.
+
+![width:1000px](/assets/tti-diagram.svg)
+
+---
+
+# Total Blocking Time (TBT)
+
+[Measures](https://web.dev/tbt/) the total amount of time between FCP and TTI where the main thread was blocked for long enough to prevent input responsiveness.
+
+![width:1000px](/assets/tbt-diagram.svg)
+
+---
+<!--
+_class: default
+-->
 
 ![bg left:40% 70%](/assets/lighthouse-logo.svg)
 
@@ -241,8 +264,64 @@ The Chrome User Experience Report is powered by real user measurement of key use
 
 ```bash
 npm install -g lighthouse
-lighthouse https://cnn.com
+lighthouse https://bestbuy.com --view
 ```
 
 ---
 
+# DevTools
+
+---
+
+## DevTools: Network
+
+* The waterfall
+* The filmstrip
+* Page size
+* Request count
+* DOMContentLoaded (Node tree)
+* Load (images, assets)
+* Finish (async requests)
+
+DEMO
+
+---
+
+## DevTools: Performance profile
+
+* Frames
+* Web Vitals timeline
+* Timings 
+* Experience
+
+DEMO
+
+---
+
+## Throttling
+
+---
+
+# Performance goals
+
+Good performance is contextual. So set goals based on those contexts.
+
+1) See content 
+2) Click a thing
+
+
+---
+# Performance budgets
+
+Lighthouse can run an audit against your goals and deliver a report showing how your goals match up.
+
+---
+
+# Auditing a page
+
+--- 
+
+Download the [performance audit worksheet]().
+## 📋
+
+---
