@@ -397,7 +397,7 @@ Good performance is contextual. So set goals based on those contexts.
 
 - Lighthouse can run an audit against your goals and show when you are making too many requests or too large of files in categories.
 - There is no one set budget
-- Download our sample budget with all options on github.com
+- Download our sample budget with all options on [github.com](https://github.com/pixotech/performance-workshop/blob/production/lighthouse-sample-configs/budget-sample.json)
 - can only be used with cli or ci version
 
 ---
@@ -413,7 +413,7 @@ Download the [performance audit worksheet]().
 
 ---
 
-> "We can’t let **best** be the enemy of **better** code."
+# "We can’t let **best** be the enemy of **better** code."
 — Michael Feathers - Working Effectively With Legacy Code
 
 ---
@@ -423,7 +423,7 @@ Download the [performance audit worksheet]().
 ![width:800px](assets/lighthouse-100.png)
 
 - Perfect 100 might be fast, but is it useful
-- Metrics are changing, internet is changing
+- Metrics are changing, internet is changing, devices are changing
 
 ---
 
@@ -431,24 +431,38 @@ Download the [performance audit worksheet]().
 
 App <-> Single File Website <-> All separate files
 
-- There is no one best, most performant website, it depends on use cases.
+- 
 - How fast does the site update?
 - What connection does your user have?
 
 ---
 
-# Waterfall View
-
-- Timeline of when resources are requested and completed
-- Devtools has two : Performance and Network tabs
-- Useful with cache enabled and disabled
-
-![width:1000px](/assets/waterfall-overview.png)
+# There is no one best, most performant website
+it depends on your user's use cases
 
 ---
 
-# Ideal Waterfall
+# Waterfall View
 
+![width:1000px](assets/waterfall-stevezazeskicom.jpg)
+
+---
+
+# Ideal Waterfall*
+
+[**Single Request**](http://webcon-performance-pixotech-com.s3-website-us-east-1.amazonaws.com/example-sites/single-call.html)
+
+![width:1000px](assets/waterfall-singlefile.jpg)
+
+---
+
+# Real Ideal Waterfall
+
+![width:1000px](assets/waterfall-caching.png)
+
+---
+# Option Menu in Waterfall hides alot
+![width:1000px](assets/waterfall-option-menu.png)
 
 ---
 
@@ -456,7 +470,7 @@ App <-> Single File Website <-> All separate files
 
 - Free version will check 1 webpage per day
 
-![width:1000px](/assets/statuscake-page-speed.png)
+![width:1000px](assets/statuscake-page-speed.png)
 
 - Can set alerts if load time or file size goes over a set level
 - Can throttle connection to simulate mobile
@@ -485,9 +499,9 @@ Number of seperate resources that need to be loaded matters.
 
 ![width:500px](https://camo.githubusercontent.com/7a8b6a7f43c5fc685a5b5cd5541566fbaf42be38e0dc1c2ecc2c4963697d1c52/687474703a2f2f692e696d6775722e636f6d2f737a7a443971302e706e67)
 - is a simple command line tool to place load on a webserver
-    - `brew install hey`
-- Be careful running the default settings, 50 req/s for 250 request can be alot for dynamic sites without cache, for static/cached its fine.
-    - `hey https://poor-performance.pixodev.net` defaults to 50reqs/s for 250 requests
+    - `brew install hey` or download from https://github.com/rakyll/hey
+- Be careful running the default settings
+    - `hey https://poor-performance.pixodev.net` 50/s for 250 requests
     - `hey -n 500 -c 10 https://poor-performance.pixodev.net` 500 requests at 10/s
     - `hey -z 10m -c 5 https://poor-performance.pixodev.net` runs for 10m with 5/s
 
@@ -550,26 +564,39 @@ https://tools.keycdn.com/brotli-test
 
 ---
 
-# Serve static assets with an efficient cache policy
-- Add Cache headers
-  `Cache-Control: max-age=31536000`
-
-- Apache or Nginx create or edit the root `.htaccess`
+# Serve static assets with an efficient cache policy 
+  - Add headers `Cache-Control: max-age=31536000`
+  - Apache or Nginx create or edit the root `.htaccess`
  ```
- # cache images content for one month
 <FilesMatch ".(gif|jpg|jpeg|png|ico)$">
-    Header set Cache-Control "max-age=2592000"
+    Header set Cache-Control "max-age=#####"
 </FilesMatch>
  ```
-
-- `86400` = 1 day
-- `604800` = 1 week
-- `2419200` = 1 month
-- `29030400` = 1 year
+  - `86400` = 1 day, `604800` = 1 week, `2419200` = 1 month, `29030400` = 1 year
 
 ---
 
-# Apache Cache with mod_expires
+# Cache-Control Headers
+
+## public
+The response may be stored in any cache
+
+## private
+The response may be stored only in the browser's cache
+
+---
+
+# Cache-Control Headers
+
+## no-cache
+The response may be stored by any cache, even if the response is normally non-cacheable. However, the stored response MUST always go through validation with the origin server first before using it.
+
+## no-store
+The response may not be stored in any cache. Note that this will not prevent a valid pre-existing cached response being returned. Clients can set max-age=0
+
+---
+
+# Apache Cache with `mod_expires`
 ```
 <IfModule mod_expires.c>
     ExpiresActive On
@@ -589,7 +616,7 @@ https://tools.keycdn.com/brotli-test
 ```
 ---
 
-# Apache Cache with mod_headers
+# Apache Cache with `mod_headers`
 ```
 <ifModule mod_headers.c> 
     # One year for image and video files
@@ -609,13 +636,11 @@ https://tools.keycdn.com/brotli-test
 </ifModule>
 ```
 
-
 ---
 
 # nginx cache
 
 `/etc/nginx/sites-available/default`
-
 ```
 # Expires map
 map $sent_http_content_type $expires {
@@ -635,29 +660,11 @@ server {
 
 ---
 
-# Cache-Control Headers
-
-# public
-The response may be stored in any cache
-
-# private
-The response may be stored only in the browser's cache
-
----
+- When DevTools is open, it defaults to Disable cache
+- Not realistic to what users will see
 
 
-# Cache-Control Headers
 
-## no-cache
-The response may be stored by any cache, even if the response is normally non-cacheable. However, the stored response MUST always go through validation with the origin server first before using it.
-
-## no-store
-The response may not be stored in any cache. Note that this will not prevent a valid pre-existing cached response being returned. Clients can set max-age=0
-
-
----
-
-When DevTools is open, it defaults to Disable cache which is normally what you want. To see i
 
 ___
 
@@ -674,17 +681,19 @@ ___
 
 A very easy to use caching solution. This improves php load time, it doesn't minify css or change image formats.
 
-![width:500px](/assets/wordpress-supercache.png)
+![width:500px](assets/wordpress-supercache.png)
 
 ---
 
 # Wordpress: WebP Converter for Media
 
-- Auto converts JPG/PNG to WebP
-- Requires a gd library with webp support
+  - Auto converts JPG/PNG to WebP
+  - Uses .htaccess to redirect .jpg/.png to a php file to decide what to serve
+  - Requires a gd library with webp support
 
 - Most plugins use remote conversion and a limit/cost per image
-  ![width:500px](/assets/wordpress-webp.png)
+  ![width:500px](assets/wordpress-webp.png)
+  
 ---
 
 # PageSpeed Modules
@@ -708,7 +717,7 @@ Original is 2044x3840 pixels
 
 ---
 
-# Image Comrpession deep-dive
+# Image Compression deep-dive
 
 https://www.youtube.com/watch?v=F1kYBnY6mwg
 ![image](assets/image-compresion-deep-dive.png)
@@ -838,7 +847,8 @@ icarus.pixodev.net.	59	IN	A	173.167.185.184
 # Real Mobile Testing
 - Devtools uses artifical network and cpu slowdowns
 
-![width:800px](/assets/)
+![width:500px](assets/lighthouse-network-throttling.png)
+![width:500px](assets/mobile-speeds.png)
 
 ---
 
