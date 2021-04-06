@@ -310,6 +310,24 @@ _class: _default
 
 ---
 
+# Find the fastest sites
+
+# Find the worst sites
+
+---
+
+## Best
+ - giftofspeed.com - 100
+
+
+## Worse
+ - 
+
+
+---
+
+
+
 # The command line
 
 * Free of browser extensions
@@ -330,7 +348,7 @@ lighthouse https://bestbuy.com --view
 ---
 
 `lighthouse`
-
+ 
 ---
 
 # DevTools
@@ -445,7 +463,7 @@ App <-> Single File Website <-> All separate files
 
 ---
 
-# Number of Concurrent
+# Number of Concurrent Connections
 
 Number of seperate resources that need to be loaded matters.
 
@@ -521,9 +539,14 @@ https://tools.keycdn.com/http2-test
 
 Gzip / Brotli
 
+- Module for Apache/nginx that compresses files in transit (mostly html, css, and js) during the transfer
+
+- `mod_deflate` or `mod_gzip` or `mod_
 
 
 https://tools.keycdn.com/brotli-test
+
+![width:500px](assets/gzip-result.png)
 
 ---
 
@@ -586,11 +609,50 @@ https://tools.keycdn.com/brotli-test
 </ifModule>
 ```
 
+
 ---
 
-# no-cache
+# nginx cache
 
-Actually doesn't mean the assets won't be cached, just that its etag must be checked
+`/etc/nginx/sites-available/default`
+
+```
+# Expires map
+map $sent_http_content_type $expires {
+    default                    off;
+    text/html                  epoch;
+    text/css                   max;
+    application/javascript     max;
+    ~image/                    max;
+}
+
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    expires $expires;
+```
+
+---
+
+# Cache-Control Headers
+
+# public
+The response may be stored in any cache
+
+# private
+The response may be stored only in the browser's cache
+
+---
+
+
+# Cache-Control Headers
+
+## no-cache
+The response may be stored by any cache, even if the response is normally non-cacheable. However, the stored response MUST always go through validation with the origin server first before using it.
+
+## no-store
+The response may not be stored in any cache. Note that this will not prevent a valid pre-existing cached response being returned. Clients can set max-age=0
 
 
 ---
@@ -773,6 +835,17 @@ icarus.pixodev.net.	59	IN	A	173.167.185.184
 
 ---
 
+# Real Mobile Testing
+- Devtools uses artifical network and cpu slowdowns
+
+![width:800px](/assets/)
+
+---
+
+# scrcpy
+
+---
+
 # DevTools on Mobile Devices
 
 1. Connect phone via USB
@@ -780,6 +853,10 @@ icarus.pixodev.net.	59	IN	A	173.167.185.184
 1. Authorize debugging (will reprompt in 14 days)
 1. Goto **chrome:\\inspect** on your desktop chrome
 1. Click **inspect** on the tab you want to open devtools on
+
+---
+
+![width:900px](/assets/lighthouse-pwa.png)
 
 ---
 
