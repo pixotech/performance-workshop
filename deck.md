@@ -62,19 +62,22 @@ _class: lead
 
 ## Steve Zazeski
 
-![bg left:40% 70%](/assets/steve-zazeski--320px.jpg)
-- Undergrad at **U of I** in Computer Engineering
-- Worked for College of ACES - Extension, now at Pixo
-- Enjoy the range from microcontrollers (ESP32/arudinos) to k8s clusters
+![bg left:40% 70%](assets/steve-zazeski--320px.jpg)
+- Alumni of **UIUC Computer Engineering**
+- Started as a student worker in *College of ACES* - *Extension*, now downtown Urbana at Pixo across the street from *Crane Alley*
+- Truly enjoy getting to work on the range from microcontrollers (ESP32/arduino) to cloud scale k8s clusters
 
 ---
 
 ## Jason Rambeck
 
-![bg left:40% 70%](/assets/jason-rambeck--320px.jpg)
-- a
-- b
-- c
+![bg left:40% 70%](assets/jason-rambeck--320px.jpg)
+I've been building websites since 2002 and still loving it. I continue to strive building content managed websites for people with tools that are pleasant to work with and allow for rich story telling.
+
+---
+
+![width:450px](assets/ahaslides-qr.png)
+<a href="https://ahaslides.com/WEBCON" target="_blank" style="font-size:4rem;">ahaslides.com/WEBCON</a>
 
 ---
 
@@ -492,7 +495,6 @@ it depends on your use case
 
 ![width:400px](assets/waterfall-option-menu.png)
 
-
 ---
 
 # Activity : Test our site
@@ -503,8 +505,10 @@ https://poor-performance.pixodev.net/lots-of-images/
 
 ---
 
-# Activity : Test your site
+# Activity
+# Test your site
 
+Does anyone want to share what they found
 
 ---
 
@@ -518,21 +522,23 @@ Number of seperate resources that need to be loaded matters.
 
 ---
 
-# Default Concurrent
+# Server Default Concurrent Connections
 
-- Apache == 8 threads **150**
+- Apache == **150**
 - nginx == **512**
 - iis == **5000**
 
+Without load testing and tuning, these numbers are just limits
+
 ---
 
-![width:500px](https://camo.githubusercontent.com/7a8b6a7f43c5fc685a5b5cd5541566fbaf42be38e0dc1c2ecc2c4963697d1c52/687474703a2f2f692e696d6775722e636f6d2f737a7a443971302e706e67)
+![width:250px](https://camo.githubusercontent.com/7a8b6a7f43c5fc685a5b5cd5541566fbaf42be38e0dc1c2ecc2c4963697d1c52/687474703a2f2f692e696d6775722e636f6d2f737a7a443971302e706e67)
 - is a simple command line tool to place load on a webserver
     - `brew install hey` or download from https://github.com/rakyll/hey
 - Be careful running the default settings
     - `hey https://poor-performance.pixodev.net` 50/s for 250 requests
-    - `hey -n 500 -c 10 https://poor-performance.pixodev.net` 500 requests at 10/s
-    - `hey -z 10m -c 5 https://poor-performance.pixodev.net` runs for 10m with 5/s
+    - `hey -n 5000 -c 10 https://poor-performance.pixodev.net` 10 requests per second for 5000 total requests 
+    - `hey -z 10m -c 5 https://poor-performance.pixodev.net` runs for 10m with 5 requests per second
 
 ---
 
@@ -544,14 +550,18 @@ Number of seperate resources that need to be loaded matters.
 
 # Reverse Proxy Cache
 
- - Cloudflare/Fastly/Cloudfront 
+ - Cloudflare
+ - Fastly 
+ - Cloudfront 
  - [Varnish](https://varnish-cache.org/)
  - [Nginx Proxy Manager](https://nginxproxymanager.com/screenshots)
-   ![width:500px](https://nginxproxymanager.com/screenshots/proxy-hosts-add.png)
+   ![bg left:50% 100%](https://nginxproxymanager.com/screenshots/proxy-hosts-add.png)
    
 ---
 
 # Take a BREAK
+
+When you return we will cover common lighthouse issues
 
 ---
 
@@ -564,6 +574,11 @@ Number of seperate resources that need to be loaded matters.
 - Image elements do not have explicit width and height
 - Avoid enormous network payloads
 - Minimize main-thread work
+
+---
+
+![image](assets/webserver-market.png)
+https://news.netcraft.com/archives/category/web-server-survey/
 
 ---
 
@@ -604,20 +619,22 @@ Number of seperate resources that need to be loaded matters.
 - TCP doesn't like out of order packet
 - 14% of web servers, 7% of desktops, 0% of mobile support it (April 2021)
 - (Chrome 79*, firefox 72*, safari 14)
+
 ---
 
-Gzip / Brotli
+# Gzip / Brotli
 
-- Module for Apache/nginx that compresses files in transit (mostly html, css, and js) during the transfer
+  - Module for Apache/nginx that compresses files in transit (mostly html, css, and js) during the transfer
 
-- gzip 78%, brotli 82%
+  - gzip 78%, brotli 82% savings over uncompressed text
 
-- `mod_deflate` or `mod_gzip` or `mod_brotli`
+  - `mod_deflate` or `mod_gzip` or `mod_brotli`
 
+---
 
 https://tools.keycdn.com/brotli-test
 
-![width:500px](assets/gzip-result.png)
+![width:700px](assets/gzip-result.png)
 
 ---
 
