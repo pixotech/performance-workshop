@@ -495,6 +495,19 @@ it depends on your use case
 
 ---
 
+# Activity : Test our site
+
+What happens to this site?
+https://poor-performance.pixodev.net/lots-of-images/
+
+
+---
+
+# Activity : Test your site
+
+
+---
+
 # Number of Concurrent Connections
 
 Number of seperate resources that need to be loaded matters.
@@ -570,7 +583,7 @@ Number of seperate resources that need to be loaded matters.
 
 ---
 
- ![width:500px](assets/http2.png)
+ ![width:700px](assets/http2.png)
 
 ---
 
@@ -816,6 +829,20 @@ https://www.youtube.com/watch?v=F1kYBnY6mwg
 
 ---
 
+# Image Resizing CDNs
+ - Some let you place your full size image on your server
+ - Use the CDN url which auto resizes
+
+```
+<img src="https://ik.imagekit.io/ikmedia/building.jpg" 
+     srcset="https://ik.imagekit.io/ikmedia/building.jpeg?tr=w-300 300w,
+             https://ik.imagekit.io/ikmedia/building.jpeg?tr=w-600 600w,
+             https://ik.imagekit.io/ikmedia/building.jpeg?tr=w-900 900w"
+/>
+```
+
+---
+
 # Activity
 ## Find assets on your own website that can be improved
   - Try out : https://squoosh.app/
@@ -843,9 +870,8 @@ When you return we will wrap up with CI/automations
 
 ---
 
-# Lighthouse-ci
-  - Continuous Integration for Lighthouse
-  - https://github.com/GoogleChrome/lighthouse-ci
+# lhci
+  - [Lighthouse Continuous Integration](https://github.com/GoogleChrome/lighthouse-ci)
 
 `npm install -g @lhci/cli`
 `lhci autorun`
@@ -853,7 +879,29 @@ When you return we will wrap up with CI/automations
 ```
 lhci collect --url https://pixotech.com
 lhci open
-lhci upload
+lhci upload --config file.json
+     upload --target lhci --token 2348-3829 --serverBaseURL https://example.com
+```
+
+---
+
+![image](assets/lighthouse-ci.png)
+
+
+---
+
+# Creating a new job
+
+`lhci wizard`
+```
+? What is the URL of your LHCI server? https://pixo:pixo@lighthouse-ci.pixodev.net
+? What would you like to name the project? basic-auth-test
+? Where is the project's code hosted? nowhere
+? What branch is considered the repo's trunk or main branch? main
+
+Created project basic-auth-test (5a4060d1-f122-422f-80b8-5d6e74926965)!
+Use build token b54c8ac2-ced1-4f99-9699-ff3c04e988e0 to add data.
+Use admin token KkGbJNDbEqLxqnBvWilLKZlmG2sY5Il5cocyKEgR to manage data. KEEP THIS SECRET!
 ```
 
 ---
@@ -861,9 +909,9 @@ lhci upload
 # When to use lhci instead of lighthouse
   - You want automated runs of lighthouse with a config file running the entire process
   - You can still script `lighthouse`
+  - You want to control the upload to a source
 
 ---
-
 
 # Getting started with lhci
 
@@ -1001,5 +1049,22 @@ Progressive web apps are coming with moderate support on iOS and Android.
 ---
 
 # CDN - Cloudfront
+
+
+
+---
+
+
+# Critical Path CSS
+
+https://jonassebastianohlsson.com/criticalpathcssgenerator/
+https://criticalcss.com
+
+`yarn add --dev penthouse`
+
+
+---
+
+![width:1000px](assets/criticalpathcss.png)
 
 ---
