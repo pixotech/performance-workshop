@@ -61,16 +61,21 @@ _class: lead
 ---
 
 ## Steve Zazeski
-![image](/assets/steve-zazeski--320px.jpg)
 
-- Undergrad at U of I Computer Engineering
+![bg left:40% 70%](/assets/steve-zazeski--320px.jpg)
+- Undergrad at **U of I** in Computer Engineering
 - Worked for College of ACES - Extension, now at Pixo
-- 
+- Enjoy the range from microcontrollers (ESP32/arudinos) to k8s clusters
 
 ---
 
 ## Jason Rambeck
-![image](/assets/jason-rambeck--320px.jpg)
+
+![bg left:40% 70%](/assets/jason-rambeck--320px.jpg)
+- a
+- b
+- c
+
 ---
 
 ## Why performance matters
@@ -127,7 +132,7 @@ Source: [Google](https://www.thinkwithgoogle.com/marketing-resources/data-measur
 
 ---
 
-##**Fast websites build trust**
+# Fast websites build trust
 > — _Yesenia Perez Cruz_ [[Youtube]](https://www.youtube.com/watch?v=wBcPEZf0hwI)
 
 ---
@@ -285,15 +290,28 @@ _class: _default
 
 ---
 
+# cnn.com - Mobile
+
+![width:1000px](assets/cnn-mobile.png)
+
+---
+
 # bestbuy.com - Desktop
 
-![width:800px](assets/bestbuycom-desktop.png)
+![width:1000px](assets/bestbuycom-desktop.png)
 
 ---
 
 # bestbuy.com - Mobile
 
-![width:800px](assets/bestbuycom-mobile.png)
+![width:1000px](assets/bestbuycom-mobile.png)
+
+---
+
+# Space Jam website
+https://www.spacejam.com/1996/
+
+![width:1000px](assets/spacejam-desktop.png)
 
 ---
 
@@ -314,23 +332,29 @@ _class: _default
 
 ---
 
-# Find the fastest sites
+# Read the tips during a run
 
-# Find the worst sites
+![width:1000px](assets/lighthouse-tips.png)
+
+---
+
+# Activity
+
+## Find the fastest sites you can find
+
+## Find the slowest sites you can find
 
 ---
 
 ## Best
  - giftofspeed.com - 100
-
+ - spacejam.com/1996 - 100 (232kb)
+ - dozzle.dev - 99 (time to interactive 0.3s)
 
 ## Worse
- - 
-
+ - cnn.com - 1
 
 ---
-
-
 
 # The command line
 
@@ -440,7 +464,8 @@ App Single Request <-> Few Large Requests <-> Lots Small Requests
 
 ---
 
-# There is no one best, most performant website
+# There is no one best,
+# most performant website
 it depends on your use case
 
 ---
@@ -465,8 +490,7 @@ it depends on your use case
 
 ---
 
-# Option Menu in Waterfall hides alot
-![width:500px](assets/waterfall-option-menu.png)
+![width:400px](assets/waterfall-option-menu.png)
 
 
 ---
@@ -489,8 +513,6 @@ Number of seperate resources that need to be loaded matters.
 
 ---
 
-# hey
-
 ![width:500px](https://camo.githubusercontent.com/7a8b6a7f43c5fc685a5b5cd5541566fbaf42be38e0dc1c2ecc2c4963697d1c52/687474703a2f2f692e696d6775722e636f6d2f737a7a443971302e706e67)
 - is a simple command line tool to place load on a webserver
     - `brew install hey` or download from https://github.com/rakyll/hey
@@ -501,23 +523,44 @@ Number of seperate resources that need to be loaded matters.
 
 ---
 
+# Slashdot Effect / Viral Links
+
+![image](https://www.sentex.ca/~mwandel/traffic/total-hits.png)
+
+---
+
+# Reverse Proxy Cache
+
+ - Cloudflare/Fastly/Cloudfront 
+ - [Varnish](https://varnish-cache.org/)
+ - [Nginx Proxy Manager](https://nginxproxymanager.com/screenshots)
+   ![width:500px](https://nginxproxymanager.com/screenshots/proxy-hosts-add.png)
+   
+---
+
+# Take a BREAK
+
+---
+
 # Common Lighthouse Issues
 
-- Properly size images
 - HTTP/2
 - Serve static assets with an efficient cache policy
+- Properly size images
+  
 - Image elements do not have explicit width and height
 - Avoid enormous network payloads
 - Minimize main-thread work
 
 ---
 
-# Nginx
+# nginx
 
 - Created in 2002 to solve the `C10k` issue for Rambler search engine
 - Designed to outperform Apache, not as flexible
 - Uses a different paradigm to avoid fork bombing and uses much less memory
 - Its more difficult to setup, lots of docker containers just have apache
+- Alot of its default settings have performance in mind, its just newer
 
 ---
 
@@ -527,13 +570,18 @@ Number of seperate resources that need to be loaded matters.
 
 ---
 
-# Enable HTTP/2 in apache
+ ![width:500px](assets/http2.png)
 
-on docker
-`RUN a2enmod http2`
+---
+
+# Enable HTTP/2
+
+  - apache `a2enmod http2`
+  - nginx change site setting: `listen 443 ssl http2;`
 
 
-https://tools.keycdn.com/http2-test
+  - https://tools.keycdn.com/http2-test
+    ![width:500px](assets/http2-test.png)
 
 ---
 
@@ -549,7 +597,9 @@ Gzip / Brotli
 
 - Module for Apache/nginx that compresses files in transit (mostly html, css, and js) during the transfer
 
-- `mod_deflate` or `mod_gzip` or `mod_
+- gzip 78%, brotli 82%
+
+- `mod_deflate` or `mod_gzip` or `mod_brotli`
 
 
 https://tools.keycdn.com/brotli-test
@@ -587,6 +637,14 @@ The response may be stored by any cache, even if the response is normally non-ca
 
 ## no-store
 The response may not be stored in any cache. Note that this will not prevent a valid pre-existing cached response being returned. Clients can set max-age=0
+
+---
+
+# Etag
+  - Check the file hash to see if it has changed from the cached version
+  - Most servers automatically add etag for you to static assets
+  - `304 Not Modified`
+  - `etag: "2d9d-5a31a59c7b011-gzip"`
 
 ---
 
@@ -663,6 +721,8 @@ ___
   - Lets you use long cache periods and still change files
 
 `src="image.png"`
+
+
 `src="image.png?20210403"`
 `src="image.png?v1"`
 
@@ -749,11 +809,6 @@ cwebp bestbuycom-desktop.png -q 80 -o bestbuycom-desktop.webp
 
 ---
 
-Try out
-https://squoosh.app/
-
----
-
 # Image Compression deep-dive
 
 https://www.youtube.com/watch?v=F1kYBnY6mwg
@@ -763,7 +818,14 @@ https://www.youtube.com/watch?v=F1kYBnY6mwg
 
 # Activity
 ## Find assets on your own website that can be improved
-- Write a chat comment if you find any good ones
+  - Try out : https://squoosh.app/
+  - Write a chat comment if you find any good ones
+
+---
+
+# Last Break
+## Almost made it to 4.30pm...
+When you return we will wrap up with CI/automations
 
 ---
 
@@ -905,7 +967,12 @@ icarus.pixodev.net.	59	IN	A	173.167.185.184
 
 ---
 
-# scrcpy
+# scrcpy (screen copy)
+
+  - Allows your machine to control a real device as though it was a simulator
+  - No lag, no emulation
+  - https://github.com/Genymobile/scrcpy
+  - `brew install scrcpy`
 
 ---
 
@@ -930,5 +997,9 @@ Progressive web apps are coming with moderate support on iOS and Android.
 - JS code that can run offline through service workers
 - Cache layer for offline
 - Be careful with service workers (create-react-app)
+
+---
+
+# CDN - Cloudfront
 
 ---
