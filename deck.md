@@ -78,28 +78,34 @@ _class: lead
 ---
 
 # Internet Speeds in the US
-
+![width:1000px](assets/internet-speed-website-speed.png)
 
 ---
 
 # Netflix Speeds
-![image](/assets/netflix-2020-speeds.png)
-- 0.5mbps min, 3mbps SD, 5mbps HD, 25mbps UHD
+![image](assets/netflix-2020-speeds.png)
+- **0.5**mbps min, **3**mbps SD, **5**mbps HD, **25**mbps UHD
+- https://ispspeedindex.netflix.net/about
 
 ---
 
 # Mobile Speeds are increasing
-![width:1000px](/assets/opensignal_2021_devices.jpg)
+![width:1000px](assets/opensignal_2021_devices.jpg)
 
 ---
 
 # Future 5G
-![width:1000px](/assets/opensignal-4g-5g.jpg)
+![width:1000px](assets/opensignal-4g-5g.jpg)
+
+---
+
+# Mobile Speed and Pageload Increases
+![width:1000px](assets/internet-mobile-speed.png)
 
 ---
 
 https://almanac.httparchive.org/en/2020/performance
-![width:900px](/assets/lighthouse-distribution.png)
+![width:1000px](assets/lighthouse-distribution.png)
 
 ---
 
@@ -107,7 +113,7 @@ https://almanac.httparchive.org/en/2020/performance
 
 Users studies have shown that page speed is the number one factor in user experience.
 
-![width:700px](/assets/ux-hierarchy.png)
+![width:700px](assets/ux-hierarchy.png)
 
 Source: [SPEED MATTERS: Designing for mobile performance](https://www.awwwards.com/brain-food-perceived-performance/)
 
@@ -115,15 +121,13 @@ Source: [SPEED MATTERS: Designing for mobile performance](https://www.awwwards.c
 
 ## Bounce rate
 
-![image](/assets/bounce-rates.png)
+![image](assets/bounce-rates.png)
 
 Source: [Google](https://www.thinkwithgoogle.com/marketing-resources/data-measurement/mobile-page-speed-new-industry-benchmarks/)
 
 ---
 
-## Trust
-
-> **Fast websites build trust**
+##**Fast websites build trust**
 > — _Yesenia Perez Cruz_ [[Youtube]](https://www.youtube.com/watch?v=wBcPEZf0hwI)
 
 ---
@@ -147,23 +151,23 @@ Google created a set of Web Vitals that help us think about (and measure) unique
 
 Core Web Vitals are a subset of these metrics they have determined are the most meaningful.
 
-![width:1000px](/assets/core-web-vitals.png)
+![width:1000px](assets/core-web-vitals.png)
 
 ---
 
-![bg left:40% 70%](/assets/lcp_ux.svg)
+![bg left:40% 70%](assets/lcp_ux.svg)
 # Largest Contentful Paint
 
 [Measures](https://web.dev/lcp/) the time until the page displays what is likely its main content, like a hero image or heading
 
 ---
 
-![width:800px](/assets/lcp-example-1.png)
-![width:800px](/assets/lcp-example-2.png)
+![width:800px](assets/lcp-example-1.png)
+![width:800px](assets/lcp-example-2.png)
 
 ---
 
-![bg left:40% 70%](/assets/fid_ux.svg)
+![bg left:40% 70%](assets/fid_ux.svg)
 # First Input Delay
 
 measures the interactivity of the page, from the user's first interaction to the time the page responds to it.
@@ -171,11 +175,11 @@ _Field only metric (not in Lighthouse)_
 
 ---
 
-![width:1000px](/assets/fid-diagram.svg)
+![width:1000px](assets/fid-diagram.svg)
 
 ---
 
-![bg left:40% 70%](/assets/cls_ux.svg)
+![bg left:40% 70%](assets/cls_ux.svg)
 # Cumulative Layout Shift
 
 measures the degree of layout instability on the page, due to shifts like asynchronously loaded content being injected
@@ -227,14 +231,14 @@ measures the degree of layout instability on the page, due to shifts like asynch
 
 [Measures](https://web.dev/tbt/) the total amount of time between FCP and TTI where the main thread was blocked for long enough to prevent input responsiveness.
 
-![width:1000px](/assets/tbt-diagram.svg)
+![width:1000px](assets/tbt-diagram.svg)
 
 ---
 <!--
 _class: lead
 -->
 
-![bg left:40% 70%](/assets/lighthouse-logo.svg)
+![bg left:40% 70%](assets/lighthouse-logo.svg)
 
 # Lighthouse
 
@@ -269,7 +273,7 @@ _class: _default
 
 ---
 
-![width:700px](/assets/psi-vitals.png)
+![width:700px](assets/psi-vitals.png)
 
 ---
 
@@ -429,16 +433,15 @@ Download the [performance audit worksheet]().
 
 # Balance of Performance
 
-App <-> Single File Website <-> All separate files
+App Single Request <-> Few Large Requests <-> Lots Small Requests 
 
-- 
-- How fast does the site update?
+- How fast does your site update?
 - What connection does your user have?
 
 ---
 
 # There is no one best, most performant website
-it depends on your user's use cases
+it depends on your use case
 
 ---
 
@@ -450,9 +453,9 @@ it depends on your user's use cases
 
 # Ideal Waterfall*
 
-[**Single Request**](http://webcon-performance-pixotech-com.s3-website-us-east-1.amazonaws.com/example-sites/single-call.html)
+[**Single Request**](https://webcon-performance.pixotech.com/example-sites/single-call.html)
 
-![width:1000px](assets/waterfall-singlefile.jpg)
+![width:1000px](assets/waterfall-singlefile.png)
 
 ---
 
@@ -461,19 +464,10 @@ it depends on your user's use cases
 ![width:1000px](assets/waterfall-caching.png)
 
 ---
+
 # Option Menu in Waterfall hides alot
-![width:1000px](assets/waterfall-option-menu.png)
+![width:500px](assets/waterfall-option-menu.png)
 
----
-
-# Statuscake Page Speed Monitoring
-
-- Free version will check 1 webpage per day
-
-![width:1000px](assets/statuscake-page-speed.png)
-
-- Can set alerts if load time or file size goes over a set level
-- Can throttle connection to simulate mobile
 
 ---
 
@@ -520,7 +514,7 @@ Number of seperate resources that need to be loaded matters.
 
 # Nginx
 
-- Created in 2002 to solve the C10k issue for Rambler search engine
+- Created in 2002 to solve the `C10k` issue for Rambler search engine
 - Designed to outperform Apache, not as flexible
 - Uses a different paradigm to avoid fork bombing and uses much less memory
 - Its more difficult to setup, lots of docker containers just have apache
@@ -564,7 +558,7 @@ https://tools.keycdn.com/brotli-test
 
 ---
 
-# Serve static assets with an efficient cache policy 
+# Efficient cache policy 
   - Add headers `Cache-Control: max-age=31536000`
   - Apache or Nginx create or edit the root `.htaccess`
  ```
@@ -572,7 +566,7 @@ https://tools.keycdn.com/brotli-test
     Header set Cache-Control "max-age=#####"
 </FilesMatch>
  ```
-  - `86400` = 1 day, `604800` = 1 week, `2419200` = 1 month, `29030400` = 1 year
+  - `86400` = 1 day, `2419200` = 1 month, `29030400` = 1 year
 
 ---
 
@@ -661,19 +655,16 @@ server {
 ---
 
 - When DevTools is open, it defaults to Disable cache
-- Not realistic to what users will see
-
-
-
+- Not realistic to what users will actually experience
 
 ___
 
 # Cache Busting
+  - Lets you use long cache periods and still change files
 
-`image.png`
-
-`image.png?20210403`
-- Your browser will treat this as a new file
+`src="image.png"`
+`src="image.png?20210403"`
+`src="image.png?v1"`
 
 ---
 
@@ -716,6 +707,52 @@ Original is 2044x3840 pixels
 - webp    7.9MB
 
 ---
+# Loss in Compression
+
+  - **Lossy** slightly changes data to get better compression (JPG)
+  - **Lossless** is an exact copy (PNG)
+  - **Vector** resizable polygons to any size (SVG)
+
+---
+# Webp
+  - A next-gen Lossy and Losseless compression
+  - ~25% smaller than PNG/JPG
+
+`brew install webp`
+`cwebp`
+
+---
+
+```
+cwebp bestbuycom-desktop.png -q 80 -o bestbuycom-desktop.webp
+  Saving file 'bestbuycom-desktop.webp'
+  File:      bestbuycom-desktop.png
+  Dimension: 3810 x 1894
+  Output:    225252 bytes Y-U-V-All-PSNR 45.38 47.14 47.58   45.94 dB
+             (0.25 bpp)
+  block count:  intra4:       5514  (19.39%)
+                intra16:     22927  (80.61%)
+                skipped:     19952  (70.15%)
+  bytes used:  header:            538  (0.2%)
+               mode-partition:  35639  (15.8%)
+   Residuals bytes  |segment 1|segment 2|segment 3|segment 4|  total
+      macroblocks:  |       1%|       5%|      15%|      79%|   28441
+        quantizer:  |      36 |      35 |      30 |      24 |
+     filter level:  |      11 |       7 |      63 |      37 |
+```
+
+```   
+1.6M  bestbuycom-desktop.png
+419K  bestbuycom-desktop.jpg
+220K  bestbuycom-desktop.webp
+```
+
+---
+
+Try out
+https://squoosh.app/
+
+---
 
 # Image Compression deep-dive
 
@@ -723,30 +760,45 @@ https://www.youtube.com/watch?v=F1kYBnY6mwg
 ![image](assets/image-compresion-deep-dive.png)
 
 ---
-- Lossy vs Lossless vs Vector
-- https://squoosh.app
+
+# Activity
+## Find assets on your own website that can be improved
+- Write a chat comment if you find any good ones
 
 ---
 
+# CI / Automations
+
+---
+
+# Statuscake - Page Speed Monitoring
+
+- Free version will check 1 webpage per day
+- Can set alerts if load time or file size goes over a set level
+- Can throttle connection to simulate mobile
+
+![width:500px](assets/statuscake-page-speed.png)
+
+---
 
 # Lighthouse-ci
-Continuous Integration for Lighthouse
-
-https://github.com/GoogleChrome/lighthouse-ci
+  - Continuous Integration for Lighthouse
+  - https://github.com/GoogleChrome/lighthouse-ci
 
 `npm install -g @lhci/cli`
-
-`lhci collect --url https://pixotech.com`
-`lhci open`
-`lhci upload`
-
 `lhci autorun`
+
+```
+lhci collect --url https://pixotech.com
+lhci open
+lhci upload
+```
 
 ---
 
 # When to use lhci instead of lighthouse
-
-- You want automated runs of lighthouse
+  - You want automated runs of lighthouse with a config file running the entire process
+  - You can still script `lighthouse`
 
 ---
 
@@ -754,15 +806,16 @@ https://github.com/GoogleChrome/lighthouse-ci
 # Getting started with lhci
 
 ```
-mkdir steve-zazeski-com-lighthouse
+FOLDER_NAME=steve-zazeski-com-lighthouse
+
+mkdir ${FOLDER_NAME}
+cd ${FOLDER_NAME}
 git init
-# 
 
 lhci collect --url https://pixotech.com
 git commit --allow-empty -m 'Run for `date -u +"%Y.%m.%d-%H.%M"`
-lhci open
+#lhci open
 lhci upload --config lhci.conf
-
 ```
 
 ---
