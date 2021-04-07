@@ -942,6 +942,7 @@ docker container run --publish 9001:9001 --mount='source=lhci-data,target=/data'
 
 `lhci wizard`
 ```
+new-project
 ? What is the URL of your LHCI server? https://pixo:pixo@lighthouse-ci.pixodev.net
 ? What would you like to name the project? basic-auth-test
 ? Where is the project's code hosted? nowhere
@@ -952,34 +953,18 @@ Use build token b54c8ac2-123-123-123-ff3c04e988e0 to add data.
 Use admin token KkGbJNDbEqLsdfsvWilLKdlmG2sY5Il5cocyKEgR to manage data. KEEP THIS SECRET!
 ```
 
+**Please save this somewhere,** if you lose the token you can't even delete the project
+
 ---
 
 # When to use lhci instead of lighthouse
   - You want automated runs of lighthouse with a config file running the entire process
   - You can still script `lighthouse`
-  - You want to control the upload to a source
+  - You want to upload to a particular destination
 
 ---
 
-# Getting started with lhci
-
-```
-FOLDER_NAME=steve-zazeski-com-lighthouse
-
-mkdir ${FOLDER_NAME}
-cd ${FOLDER_NAME}
-git init
-
-lhci collect --url https://pixotech.com
-git commit --allow-empty -m 'Run for `date -u +"%Y.%m.%d-%H.%M"`
-#lhci open
-lhci upload --config lhci.conf
-```
-[configuration](https://github.com/GoogleChrome/lighthouse-ci/blob/main/docs/configuration.md)
-
----
-
-# lighthouserc.json
+`.lighthouserc.json` in the root directory (or .yaml or .js)
 ```
 {
   "ci": {
@@ -999,6 +984,27 @@ lhci upload --config lhci.conf
   }
 }
 ```
+
+---
+
+# Getting started with lhci
+
+```
+FOLDER_NAME=steve-zazeski-com-lighthouse
+
+mkdir ${FOLDER_NAME}
+cd ${FOLDER_NAME}
+git init
+git branch daily-test && git checkout daily-test
+vi .lighthouserc.json
+
+git commit --allow-empty -m "Run for `date -u +%Y.%m.%d-%H.%M`"
+lhci autorun
+```
+
+[configuration](https://github.com/GoogleChrome/lighthouse-ci/blob/main/docs/configuration.md)
+
+
 
 ---
 
