@@ -341,25 +341,28 @@ https://www.spacejam.com/1996/
 
 ---
 
-# Activity
+# ahaslides.com\WEBCON
 
-## Find the fastest sites you can find
+## Find the fastest desktop sites you can find
+`webcon.illinois.com 99`
 
-## Find the slowest sites you can find
+## Find the slowest desktop sites you can find
+`cnn.com 7`
 
 ---
 
-## Best
+## Best Results
  - giftofspeed.com - 100
  - spacejam.com/1996 - 100 (232kb)
  - dozzle.dev - 99 (time to interactive 0.3s)
 
-## Worse
- - cnn.com - 1
-
+## Worse Results
+ - cnn.com - 7
+ - tmz.com - 12
+ 
 ---
 
-# The command line
+# Lighthouse command line tool
 
 * Free of browser extensions
 * Lots of settings available
@@ -375,11 +378,6 @@ npm install -g lighthouse
 lighthouse https://bestbuy.com --view
 ```
 
-
----
-
-`lighthouse`
- 
 ---
 
 # DevTools
@@ -426,21 +424,18 @@ Good performance is contextual. So set goals based on those contexts.
 ---
 # Performance budgets
 
+`lighthouse --budget-path budget-sample.json https://pixotech.com`
+
 - Lighthouse can run an audit against your goals and show when you are making too many requests or too large of files in categories.
-- There is no one set budget
+- There is no one set budget, but recommend always setting one
 - Download our sample budget with all options on [github.com](https://github.com/pixotech/performance-workshop/blob/production/lighthouse-sample-configs/budget-sample.json)
 - can only be used with cli or ci version
 
 ---
 
-# Auditing a page
+# Auditing your site
 
---- 
-
-Download the [performance audit worksheet]().
-## 📋
-
-
+Download the [performance audit worksheet](https://docs.google.com/document/d/13OprJnW2u4nHtjKq-F6U35Lpcbocz0xx1uZg61AOBZQ/edit?ts=606a989f).
 
 ---
 
@@ -506,9 +501,11 @@ https://poor-performance.pixodev.net/lots-of-images/
 ---
 
 # Activity
-# Test your site
+## Test your site with Network tab waterfall
 
-Does anyone want to share what they found
+  - Is your main html page fast?
+  - How many tiers of loads do you have?
+  - What is/are your slow resources?
 
 ---
 
@@ -559,6 +556,16 @@ Without load testing and tuning, these numbers are just limits
    
 ---
 
+# nginx
+
+- Created in 2002 to solve the `C10k` issue for Rambler search engine
+- Designed to outperform Apache, not as flexible
+- Uses a different paradigm to avoid fork bombing and uses much less memory
+- Its more difficult to setup, lots of docker containers just have apache
+- Alot of its default settings have performance in mind, its just newer
+
+---
+
 # Take a BREAK
 
 When you return we will cover common lighthouse issues
@@ -579,16 +586,6 @@ When you return we will cover common lighthouse issues
 
 ![image](assets/webserver-market.png)
 https://news.netcraft.com/archives/category/web-server-survey/
-
----
-
-# nginx
-
-- Created in 2002 to solve the `C10k` issue for Rambler search engine
-- Designed to outperform Apache, not as flexible
-- Uses a different paradigm to avoid fork bombing and uses much less memory
-- Its more difficult to setup, lots of docker containers just have apache
-- Alot of its default settings have performance in mind, its just newer
 
 ---
 
@@ -635,6 +632,10 @@ https://news.netcraft.com/archives/category/web-server-survey/
 https://tools.keycdn.com/brotli-test
 
 ![width:700px](assets/gzip-result.png)
+
+---
+
+# ahaslides.com/WEBCON
 
 ---
 
@@ -766,15 +767,8 @@ A very easy to use caching solution. This improves php load time, it doesn't min
 
 ---
 
-# Wordpress: WebP Converter for Media
+# ahaslides.com/WEBCON
 
-  - Auto converts JPG/PNG to WebP
-  - Uses .htaccess to redirect .jpg/.png to a php file to decide what to serve
-  - Requires a gd library with webp support
-
-- Most plugins use remote conversion and a limit/cost per image
-  ![width:500px](assets/wordpress-webp.png)
-  
 ---
 
 # PageSpeed Modules
@@ -805,6 +799,7 @@ Original is 2044x3840 pixels
 
 ---
 # Webp
+  - Released Sept 2010 by Google
   - A next-gen Lossy and Losseless compression
   - ~25% smaller than PNG/JPG
 
@@ -841,8 +836,19 @@ cwebp bestbuycom-desktop.png -q 80 -o bestbuycom-desktop.webp
 
 # Image Compression deep-dive
 
+![image](assets/image-compression-deep-dive.png)
 https://www.youtube.com/watch?v=F1kYBnY6mwg
-![image](assets/image-compresion-deep-dive.png)
+
+---
+
+# Wordpress: WebP Converter for Media
+
+- Auto converts JPG/PNG to WebP
+- Uses .htaccess to redirect .jpg/.png to a php file to decide what to serve
+- Requires a gd library with webp support
+
+- Most plugins use remote conversion and a limit/cost per image
+  ![width:500px](assets/wordpress-webp.png)
 
 ---
 
@@ -883,7 +889,15 @@ When you return we will wrap up with CI/automations
 - Can set alerts if load time or file size goes over a set level
 - Can throttle connection to simulate mobile
 
-![width:500px](assets/statuscake-page-speed.png)
+---
+
+![width:1000px](assets/statuscake-page-speed.png)
+
+---
+
+# Start Monitoring your site
+
+https://statuscake.com
 
 ---
 
@@ -904,6 +918,14 @@ lhci upload --config file.json
 
 ![image](assets/lighthouse-ci.png)
 
+---
+
+https://lighthouse-ci.pixodev.net
+
+```
+docker volume create lhci-data
+docker container run --publish 9001:9001 --mount='source=lhci-data,target=/data' --detach patrickhulce/lhci-server
+```
 
 ---
 
@@ -976,9 +998,47 @@ module.exports = {
 
 # Lighthouse with Jenkins
 
+If the executor has lhci installed:
+```
+lhci autorun
 ```
 
+If you are using a docker node
 ```
+docker container run --cap-add=SYS_ADMIN --rm \
+  --cpus="1" --shm-size=2g \
+  -v "$(pwd)/lhci-data:/home/lhci/reports/.lighthouseci" \
+  patrickhulce/lhci-client \
+  lhci collect --url="https://pixotech.com"
+```
+
+---
+
+add `.github/workflows/audit.yml` file with:
+```
+name: Performance Audit
+on: [pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-lates
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Install
+        run: |
+          npm ci
+      - name: Build
+        run: |
+          npm run build
+      - name: Run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.3.x
+          lhci autorun
+```
+
 
 ---
 
@@ -1014,7 +1074,7 @@ icarus.pixodev.net.	59	IN	A	173.167.185.184
 
 ---
 
-# Fastest Resolution
+# Fastest DNS Resolution
 
 - Bare A Records if possible
 - Higher TTLs (median is 300)
@@ -1085,3 +1145,9 @@ https://criticalcss.com
 ![width:1000px](assets/criticalpathcss.png)
 
 ---
+
+# Recap
+
+---
+
+- lighthouse

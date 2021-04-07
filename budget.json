@@ -1,0 +1,124 @@
+[
+  {
+    "path": "/*",
+    "timings": [
+      {
+        "metric": "interactive",
+        "budget": 3000
+      },
+      {
+        "metric": "first-meaningful-paint",
+        "budget": 1000
+      },
+      {
+        "metric": "first-contentful-paint",
+        "budget": 1000
+      },
+      {
+        "metric": "first-cpu-idle",
+        "budget": 1000
+      },
+      {
+        "metric": "max-potential-fid",
+        "budget": 1000
+      },
+      {
+        "metric": "estimated-input-latency",
+        "budget": 1000
+      },
+      {
+        "metric": "total-blocking-time",
+        "budget": 1000
+      },
+      {
+        "metric": "speed-index",
+        "budget": 1000
+      },
+      {
+        "metric": "largest-contentful-paint",
+        "budget": 1000
+      },
+      {
+        "metric": "cumulative-layout-shift",
+        "budget": 1000
+      }
+    ],
+    "resourceSizes": [
+      {
+        "resourceType": "script",
+        "budget": 125
+      },
+      {
+        "resourceType": "total",
+        "budget": 300
+      },
+      {
+        "resourceType": "document",
+        "budget": 300
+      },
+      {
+        "resourceType": "font",
+        "budget": 300
+      },
+      {
+        "resourceType": "image",
+        "budget": 300
+      },
+      {
+        "resourceType": "media",
+        "budget": 300
+      },
+      {
+        "resourceType": "other",
+        "budget": 300
+      },
+      {
+        "resourceType": "stylesheet",
+        "budget": 300
+      },
+      {
+        "resourceType": "third-party",
+        "budget": 300
+      }
+
+    ],
+    "resourceCounts": [
+      {
+        "resourceType": "script",
+        "budget": 1
+      },
+      {
+        "resourceType": "total",
+        "budget": 1
+      },
+      {
+        "resourceType": "document",
+        "budget": 1
+      },
+      {
+        "resourceType": "font",
+        "budget": 1
+      },
+      {
+        "resourceType": "image",
+        "budget": 1
+      },
+      {
+        "resourceType": "media",
+        "budget": 1
+      },
+      {
+        "resourceType": "other",
+        "budget": 1
+      },
+      {
+        "resourceType": "stylesheet",
+        "budget": 1
+      },
+      {
+        "resourceType": "third-party",
+        "budget": 1
+      }
+    ]
+  }
+]
