@@ -355,7 +355,7 @@ https://www.spacejam.com/1996/
 
 ---
 
-# ahaslides.com\WEBCON
+# ahaslides.com/WEBCON
 
 ## Find the fastest desktop sites you can find
 `webcon.illinois.com 99`
@@ -857,7 +857,7 @@ cwebp bestbuycom-desktop.png -q 80 -o bestbuycom-desktop.webp
 
 # Image Compression deep-dive
 
-![image](assets/image-compression-deep-dive.png)
+![width:800px](assets/image-compression-deep-dive.png)
 https://www.youtube.com/watch?v=F1kYBnY6mwg
 
 ---
