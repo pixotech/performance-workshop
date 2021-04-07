@@ -137,7 +137,7 @@ Users studies have shown that page speed is the number one factor in user experi
 
 ![width:700px](assets/ux-hierarchy.png)
 
-Source: [SPEED MATTERS: Designing for mobile performance](https://www.awwwards.com/brain-food-perceived-performance/)
+Source: [SPEED MATTERS](https://www.awwwards.com/brain-food-perceived-performance/)
 
 ---
 
@@ -273,19 +273,23 @@ _class: lead
 * [Command Line Interface](https://developers.google.com/web/tools/lighthouse#cli) . Automate your Lighthouse runs via shell scripts.
 * [Node module](https://developers.google.com/web/tools/lighthouse#programmatic) . Integrate Lighthouse into your continuous integration systems.
 ---
+
+## Google Pagespeed Insights (PSI)
+
+---
 <!--
 _class: _default
 -->
-
-### Downside
-* No easy way to export
-* No "settings"
-* Website must be public
 
 ### Upside
 * Very easy
 * Includes "field data" (limited available data)
 * API - Can use this as a service to automate or build an application.
+
+### Downside
+* No easy way to export
+* No "settings"
+* Website must be public
 
 ---
 
@@ -359,6 +363,10 @@ https://www.spacejam.com/1996/
 
 ## Find the fastest desktop sites you can find
 `webcon.illinois.com 99`
+
+---
+
+# ahaslides.com/WEBCON
 
 ## Find the slowest desktop sites you can find
 `cnn.com 7`
