@@ -35,6 +35,18 @@ marp: true
 
 ---
 
+# While you are waiting...
+
+Please install and download the following
+
+- Install Google Chrome browser
+- Install the latest version (7.3) of Lighthouse `npm install -g lighthouse`
+- Install the latest version (0.7.0) of Lighthouse CI `npm install -g @lhci/cli`
+- Download [the workshop repository](https://github.com/pixotech/performance-workshop) from Github
+- Download the [audit worksheets](https://docs.google.com/document/d/13OprJnW2u4nHtjKq-F6U35Lpcbocz0xx1uZg61AOBZQ/edit?ts=606a989f) (optionally print it)
+
+---
+
 ![bg left:40% 70%](/assets/discover.svg)
 
 April 7, 1-4:30PM
@@ -52,10 +64,6 @@ footer: '![image](/assets/pixo-logo.svg)'
 _class: lead
 -->
 
-
-
----
-
 ## About us
 
 ---
@@ -71,13 +79,19 @@ _class: lead
 
 ## Jason Rambeck
 
-![bg left:40% 70%](assets/jason-rambeck--320px.jpg)
-I've been building websites since 2002 and still loving it. I continue to strive building content managed websites for people with tools that are pleasant to work with and allow for rich story telling.
+![bg left:40% 70%](assets/jason-rambeck.jpg)
+
+I've been building websites since 2002 and still loving it. At Pixo I am a lead web developer working primarily on content management systems and websites - 
+especially WordPress.
 
 ---
 
 ![width:450px](assets/ahaslides-qr.png)
 <a href="https://ahaslides.com/WEBCON" target="_blank" style="font-size:4rem;">ahaslides.com/WEBCON</a>
+
+---
+
+![hold on to your butts meme width:800px](/assets/hold-on-to-your-butts.gif)
 
 ---
 
