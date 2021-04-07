@@ -1,0 +1,25 @@
+{
+  "ci": {
+    "collect": {
+       "url": ["https://pixotech.com/"],
+       "numberOfRuns": 3,
+       "settings": {
+         "preset": "desktop"
+        }
+    },
+    "assert": {
+       "preset": "lighthouse:all" ,
+       "budgetFile": "budget.json",
+       "assertions": {
+         "offscreen-images": "off",
+         "uses-webp-images": "off",
+         "color-contrast": "off"
+        }
+    },
+    "upload": {
+      "target": "lhci",
+      "token": "56d601b2-123-123-123-9ae4f8721e9e",
+      "serverBaseUrl": "https://username:password@lighthouse-ci.pixodev.net/"
+    }
+  }
+}

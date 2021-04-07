@@ -640,7 +640,7 @@ https://tools.keycdn.com/brotli-test
 ---
 
 # Efficient cache policy 
-  - Add headers `Cache-Control: max-age=31536000`
+  - Add headers `Cache-Control: max-age=31536000 public`
   - Apache or Nginx create or edit the root `.htaccess`
  ```
 <FilesMatch ".(gif|jpg|jpeg|png|ico)$">
@@ -676,6 +676,11 @@ The response may not be stored in any cache. Note that this will not prevent a v
   - Most servers automatically add etag for you to static assets
   - `304 Not Modified`
   - `etag: "2d9d-5a31a59c7b011-gzip"`
+
+---
+
+# "There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors."
+— @codinghorror
 
 ---
 
@@ -743,8 +748,9 @@ server {
 
 ---
 
-- When DevTools is open, it defaults to Disable cache
+- When DevTools is open, it defaults to **Disable cache**
 - Not realistic to what users will actually experience
+  ![width:700px](assets/waterfall-caching.png)
 
 ___
 
@@ -777,7 +783,7 @@ https://www.modpagespeed.com/
 - Module that loads into Apache or Nginx and **best-effort** improves site performance automatically
     - css
     - images
-    - minify
+    - minify / compresses
 
 ---
 
@@ -869,7 +875,9 @@ https://www.youtube.com/watch?v=F1kYBnY6mwg
 # Activity
 ## Find assets on your own website that can be improved
   - Try out : https://squoosh.app/
-  - Write a chat comment if you find any good ones
+  - ---
+# ahaslides.com/WEBCON
+
 
 ---
 
@@ -939,8 +947,8 @@ docker container run --publish 9001:9001 --mount='source=lhci-data,target=/data'
 ? What branch is considered the repo's trunk or main branch? main
 
 Created project basic-auth-test (5a4060d1-f122-422f-80b8-5d6e74926965)!
-Use build token b54c8ac2-ced1-4f99-9699-ff3c04e988e0 to add data.
-Use admin token KkGbJNDbEqLxqnBvWilLKZlmG2sY5Il5cocyKEgR to manage data. KEEP THIS SECRET!
+Use build token b54c8ac2-123-123-123-ff3c04e988e0 to add data.
+Use admin token KkGbJNDbEqLsdfsvWilLKdlmG2sY5Il5cocyKEgR to manage data. KEEP THIS SECRET!
 ```
 
 ---
@@ -966,50 +974,46 @@ git commit --allow-empty -m 'Run for `date -u +"%Y.%m.%d-%H.%M"`
 #lhci open
 lhci upload --config lhci.conf
 ```
-
+[configuration](https://github.com/GoogleChrome/lighthouse-ci/blob/main/docs/configuration.md)
 ---
 
 # lighthouserc.json
-(lighthouse runtime config)
-
-- Place this in the root of the site and then run `lhci autorun`
-
 ```
-// lighthouserc.js
-module.exports = {
-  ci: {
-    collect: {
-       startServerCommand: 'npm run server',
-       url: ['http://localhost:4000/'],
-       numberOfRuns: 5,
+{
+  "ci": {
+    "collect": {
+       "url": ["https://pixotech.com/"],
+       "numberOfRuns": 3
     },
-    assert: {
-       preset: 'lighthouse:all' // lighthoues:recommended, lighthouse:no-pwa
-       // budgetFile: './lighthousebudget.json' 
+    "assert": {
+       "preset": "lighthouse:all" ,
+       "budgetFile": "budget.json"
     },
-    upload: {
-      target: 'temporary-public-storage',
-    },
-  },
-};
+    "upload": {
+      "target": "lhci",
+      "token": "56d601b2-342a-1234-1234-9ae4f8721e9e",
+      "serverBaseUrl": "https://pixo:pixo@lighthouse-ci.pixodev.net/"
+    }
+  }
+}
 ```
 
 ---
 
 # Lighthouse with Jenkins
 
-If the executor has lhci installed:
+If the executor has chrome, lighthouse, lhci installed:
 ```
 lhci autorun
 ```
 
-If you are using a docker node
+If you are using a docker node and give it the `.lighthouserc.json`
 ```
 docker container run --cap-add=SYS_ADMIN --rm \
   --cpus="1" --shm-size=2g \
   -v "$(pwd)/lhci-data:/home/lhci/reports/.lighthouseci" \
   patrickhulce/lhci-client \
-  lhci collect --url="https://pixotech.com"
+  lhci autorun
 ```
 
 ---
@@ -1133,6 +1137,8 @@ Progressive web apps are coming with moderate support on iOS and Android.
 
 
 # Critical Path CSS
+
+- Fix for layout shift
 
 https://jonassebastianohlsson.com/criticalpathcssgenerator/
 https://criticalcss.com
