@@ -380,11 +380,7 @@ lighthouse https://bestbuy.com --view
 
 ---
 
-# DevTools
-
----
-
-## DevTools: Network
+## DevTools: Network Tab
 
 * The waterfall
 * The filmstrip
@@ -436,6 +432,11 @@ Good performance is contextual. So set goals based on those contexts.
 # Auditing your site
 
 Download the [performance audit worksheet](https://docs.google.com/document/d/13OprJnW2u4nHtjKq-F6U35Lpcbocz0xx1uZg61AOBZQ/edit?ts=606a989f).
+
+---
+ 
+ahaslides.com/WEBCON
+How is it going?
 
 ---
 
@@ -1088,10 +1089,15 @@ icarus.pixodev.net.	59	IN	A	173.167.185.184
 
 ---
 
-# Real Mobile Testing
-- Devtools uses artifical network and cpu slowdowns
 
-![width:500px](assets/lighthouse-network-throttling.png)
+# Mobile Testing
+- Simulated CPU and Network slowdowns
+  ![width:500px](assets/lighthouse-network-throttling.png)
+
+---
+
+# Real Mobile Testing
+https://webpagetest.org/
 ![width:500px](assets/mobile-speeds.png)
 
 ---
@@ -1125,12 +1131,7 @@ Progressive web apps are coming with moderate support on iOS and Android.
 
 - JS code that can run offline through service workers
 - Cache layer for offline
-- Be careful with service workers (create-react-app)
-
----
-
-# CDN - Cloudfront
-
+- Be careful with service workers updating (create-react-app)
 
 
 ---
@@ -1156,4 +1157,17 @@ https://criticalcss.com
 
 ---
 
-- lighthouse
+- lighthouse checks via `online`, `devtools`, `cli` or `ci`
+- Look at the waterfall for bottlenecks
+- Enable Server Caching
+- Enable Server Compression (gzip or brotli)
+- Use monitoring (statuscake)
+- Test your site with load before someone else does
+- Fix just the worse thing at the moment, then repeat
+- Don't let best get in the way of better
+
+---
+
+ahaslides.com/WEBCON
+
+---
