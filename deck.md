@@ -855,7 +855,10 @@ https://www.youtube.com/watch?v=F1kYBnY6mwg
 - Requires a gd library with webp support
 
 - Most plugins use remote conversion and a limit/cost per image
-  ![width:500px](assets/wordpress-webp.png)
+  
+---
+
+  ![width:700px](assets/wordpress-webp.png)
 
 ---
 
