@@ -60,7 +60,7 @@ _class: lead
 
 ---
 
-## Steve Zazeski
+## Steve Zazeski @sztech
 
 ![bg left:40% 70%](assets/steve-zazeski--320px.jpg)
 - Alumni of **UIUC Computer Engineering**
@@ -976,6 +976,7 @@ git commit --allow-empty -m 'Run for `date -u +"%Y.%m.%d-%H.%M"`
 lhci upload --config lhci.conf
 ```
 [configuration](https://github.com/GoogleChrome/lighthouse-ci/blob/main/docs/configuration.md)
+
 ---
 
 # lighthouserc.json
