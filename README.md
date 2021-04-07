@@ -1,3 +1,7 @@
+Check out the slide deck at:
+https://webcon-performance.pixotech.com/
+
+
 # Performance Testing: Using Tools to Measure Performance and Best Practices
 
 This is the presentation slide deck for our workshop. 
