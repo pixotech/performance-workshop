@@ -35,18 +35,6 @@ marp: true
 
 ---
 
-# While you are waiting...
-
-Please install and download the following
-
-- Install Google Chrome browser
-- Install the latest version (7.3) of Lighthouse `npm install -g lighthouse`
-- Install the latest version (0.7.0) of Lighthouse CI `npm install -g @lhci/cli`
-- Download [the workshop repository](https://github.com/pixotech/performance-workshop) from Github
-- Download the [audit worksheets](https://docs.google.com/document/d/13OprJnW2u4nHtjKq-F6U35Lpcbocz0xx1uZg61AOBZQ/edit?ts=606a989f) (optionally print it)
-
----
-
 ![bg left:40% 70%](/assets/discover.svg)
 
 April 7, 1-4:30PM
@@ -68,11 +56,11 @@ _class: lead
 
 ---
 
-## Steve Zazeski @sztech
+## Steve Zazeski [@sztech](https://twitter.com/sztech)
 
 ![bg left:40% 70%](assets/steve-zazeski--320px.jpg)
 - Alumni of **UIUC Computer Engineering**
-- Started as a student worker in *College of ACES* - *Extension*, now downtown Urbana at Pixo across the street from *Crane Alley*
+- Started as a student worker in *College of ACES* - *Extension*, now downtown Urbana at [Pixo](https://pixotech.com) across the street from *Crane Alley*
 - Truly enjoy getting to work on the range from microcontrollers (ESP32/arduino) to cloud scale k8s clusters
 
 ---
@@ -83,11 +71,6 @@ _class: lead
 
 I've been building websites since 2002 and still loving it. At Pixo I am a lead web developer working primarily on content management systems and websites - 
 especially WordPress.
-
----
-
-![width:450px](assets/ahaslides-qr.png)
-<a href="https://ahaslides.com/WEBCON" target="_blank" style="font-size:4rem;">ahaslides.com/WEBCON</a>
 
 ---
 
@@ -456,11 +439,6 @@ Good performance is contextual. So set goals based on those contexts.
 Download the [performance audit worksheet](https://docs.google.com/document/d/13OprJnW2u4nHtjKq-F6U35Lpcbocz0xx1uZg61AOBZQ/edit?ts=606a989f).
 
 ---
- 
-ahaslides.com/WEBCON
-How is it going?
-
----
 
 # "We can’t let **best** be the enemy of **better** code."
 — Michael Feathers - Working Effectively With Legacy Code
@@ -589,9 +567,8 @@ Without load testing and tuning, these numbers are just limits
 
 ---
 
-# Take a BREAK
-
-When you return we will cover common lighthouse issues
+Generates modern best practice config:
+nginxconfig.io
 
 ---
 
@@ -655,10 +632,6 @@ https://news.netcraft.com/archives/category/web-server-survey/
 https://tools.keycdn.com/brotli-test
 
 ![width:700px](assets/gzip-result.png)
-
----
-
-# ahaslides.com/WEBCON
 
 ---
 
@@ -796,10 +769,6 @@ A very easy to use caching solution. This improves php load time, it doesn't min
 
 ---
 
-# ahaslides.com/WEBCON
-
----
-
 # PageSpeed Modules
 https://www.modpagespeed.com/
 
@@ -901,9 +870,6 @@ https://www.youtube.com/watch?v=F1kYBnY6mwg
 # Activity
 ## Find assets on your own website that can be improved
   - Try out : https://squoosh.app/
-  - ---
-# ahaslides.com/WEBCON
-
 
 ---
 
@@ -939,14 +905,14 @@ https://statuscake.com
   - [Lighthouse Continuous Integration](https://github.com/GoogleChrome/lighthouse-ci)
 
 `npm install -g @lhci/cli`
+
+The goal is you only use this command:
 `lhci autorun`
 
-```
-lhci collect --url https://pixotech.com
-lhci open
-lhci upload --config file.json
-     upload --target lhci --token 2348-3829 --serverBaseURL https://example.com
-```
+But really it is running these:
+`lhci collect --url https://pixotech.com`
+`lhci open`
+`upload --target lhci --token 2348-3829 --serverBaseURL https://example.com`
 
 ---
 
@@ -956,6 +922,7 @@ lhci upload --config file.json
 
 https://lighthouse-ci.pixodev.net
 
+To start your own server:
 ```
 docker volume create lhci-data
 docker container run --publish 9001:9001 --mount='source=lhci-data,target=/data' --detach patrickhulce/lhci-server
@@ -963,12 +930,12 @@ docker container run --publish 9001:9001 --mount='source=lhci-data,target=/data'
 
 ---
 
-# Creating a new job
+# Creating a new project
 
 `lhci wizard`
 ```
 new-project
-? What is the URL of your LHCI server? https://pixo:pixo@lighthouse-ci.pixodev.net
+? What is the URL of your LHCI server? https://username:password@lighthouse-ci.pixodev.net
 ? What would you like to name the project? basic-auth-test
 ? Where is the project's code hosted? nowhere
 ? What branch is considered the repo's trunk or main branch? main
@@ -978,7 +945,7 @@ Use build token b54c8ac2-123-123-123-ff3c04e988e0 to add data.
 Use admin token KkGbJNDbEqLsdfsvWilLKdlmG2sY5Il5cocyKEgR to manage data. KEEP THIS SECRET!
 ```
 
-**Please save this somewhere,** if you lose the token you can't even delete the project
+**PLEASE save both tokens somewhere**
 
 ---
 
@@ -1057,7 +1024,7 @@ name: Performance Audit
 on: [pull_request]
 jobs:
   build:
-    runs-on: ubuntu-lates
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - name: Use Node.js 12.x
@@ -1081,7 +1048,11 @@ jobs:
 
 # DNS
 
-- Penalty you pay on first load of a sub/domain
+---
+
+## Check your site
+
+- Penalty you pay on first load of each sub/domain
 - Fast sites lookup in ~20ms
 - Normal sites lookup less than ~100ms
 
@@ -1093,6 +1064,33 @@ jobs:
 ;pixotech.com.			IN	A
 pixotech.com.		77	IN	A	52.34.48.14
 ;; Query time: 82 msec
+```
+
+---
+
+```
+$ httpstat steve.zazeski.com
+
+Connected to 3.13.92.225:80 from 192.168.1.194:41286
+HTTP/1.1 301 Moved Permanently
+Server: openresty
+Date: Mon, 12 Apr 2021 23:30:21 GMT
+Content-Type: text/html
+Content-Length: 166
+Connection: keep-alive
+Location: https://steve.zazeski.com/
+Strict-Transport-Security: max-age=63072000;includeSubDomains; preload
+X-Served-By: steve.zazeski.com
+
+Body stored in: /tmp/tmpxaqmzk5i
+
+  DNS Lookup   TCP Connection   Server Processing   Content Transfer
+[    73ms    |      25ms      |       35ms        |        1ms       ]
+             |                |                   |                  |
+    namelookup:73ms           |                   |                  |
+                        connect:98ms              |                  |
+                                      starttransfer:133ms            |
+                                                                 total:134ms
 ```
 
 ---
@@ -1197,9 +1195,3 @@ https://criticalcss.com
 - Test your site with load before someone else does
 - Fix just the worse thing at the moment, then repeat
 - Don't let best get in the way of better
-
----
-
-ahaslides.com/WEBCON
-
----
